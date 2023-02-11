@@ -1,11 +1,15 @@
-from decimal import Decimal
-
-from pydantic import BaseModel, Field
+from setuptools.command.develop import develop
 
 
 class District:
+    def __init__(self, name, confirmedCases, hospitalizations, deaths):
+        self.name = name
+        self.confirmedCases = confirmedCases
+        self.hospitalizations = hospitalizations
+        self.deaths = deaths
 
-    name: str = Field(..., alias="Country,Other")
-    confirmed: int = Field(0, alias="TotalCases")
-    deaths: int = Field(0, alias="TotalDeaths")
-    hospitalizations: int = Field(0, alias="Hospitalizations")
+    def __str__(self):
+        return f"District Details: Name: {self.name}, " \
+               f"Confirmed Cases: {self.confirmedCases}, Hospitalizations: {self.hospitalizations}," \
+               f"Death: {self.deaths}"
+
